@@ -4,6 +4,7 @@
 #include <cmath>
 #include <conio.h>
 #include <clocale>
+#include <fstream>
 
 using namespace std;
 
@@ -94,11 +95,13 @@ int main()
 {
 	setlocale (LC_ALL, "Russian");
     short int n = 4;
-    int A[n], B[n], q;
+    int A[n], B[n], q, t;
     Numgeneration(n, A);
-    char ch_key;
+    char ch_key, buff[300];
     bool bmenu = true;
+    ifstream rules;
 
+    
     while (bmenu) 
 	{
 		cout << "1. Start game.\n2. Rules\nESC for Exit.";
@@ -107,12 +110,26 @@ int main()
 	
     	case '1': 
 		{
-			
+			break;
 		}
 		
 		case '2':
 		{
-			
+			system ("cls");
+			rules.open("Rules.txt");
+			if (rules)
+			{
+				while (!rules.eof())
+				{
+					rules.getline(buff, 300);
+					cout << buff << endl;
+				}
+			rules.close();
+			}
+			else cout << "Error";
+			system("pause");
+			system("cls");
+			break;
 			
 		}
 		
