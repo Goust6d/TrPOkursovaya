@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <time.h>
 #include <cmath>
+#include <conio.h>
+#include <clocale>
 
 using namespace std;
 
@@ -90,13 +92,38 @@ void game(int A[], int B[], short int n, int k)
 
 int main()
 {
-	short int n = 4;
+	setlocale (LC_ALL, "Russian");
+    short int n = 4;
     int A[n], B[n], q;
     Numgeneration(n, A);
-    bender(n, q, B);
-    CowAndBull(A, B, n);
-    game (A, B, n, 1);
-    
+    char ch_key;
+    bool bmenu = true;
+
+    while (bmenu) 
+	{
+		cout << "1. Start game.\n2. Rules\nESC for Exit.";
+    	switch((ch_key=_getch()))
+    	{
+	
+    	case '1': 
+		{
+			
+		}
+		
+		case '2':
+		{
+			
+			
+		}
+		
+    	case 27: 
+		{
+			bmenu = false;
+			cout << endl;
+			break;
+		}
+		}
+	}
     system("PAUSE");
     return 0;
 }
