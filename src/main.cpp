@@ -56,13 +56,46 @@ int CowAndBull(int A[], int B[], short int n)
 	return(cow, bull);
 }
 
+void game(int A[], int B[], short int n, int k)
+{
+	int q, kmax=15;
+	
+	cout<<"Enter number:"<<endl;
+    		cin>>q;
+			while(q<1000 or q>9999)
+			{
+				cout<<"Enter number "<<endl;
+				cin>>q;
+			}
+			bender(n, q, B);
+ 			CowAndBull(A, B, n);
+			while (bull != n)
+			{
+				cout<<"Wrong number! Try again:"<<endl;
+				cin>>q;
+				k++;
+				if (k==kmax)
+				{
+					cout << endl << "Game over!";
+					system("pause");
+					system("cls");
+					break;
+				}
+				
+				cout<<endl;
+				bender(n, q, B);
+	 		   	CowAndBull(A, B, n);
+			}
+}
+
 int main()
 {
 	short int n = 4;
-    int A[n], B[n], q=1234;
+    int A[n], B[n], q;
     Numgeneration(n, A);
     bender(n, q, B);
     CowAndBull(A, B, n);
+    game (A, B, n, 1);
     
     system("PAUSE");
     return 0;
