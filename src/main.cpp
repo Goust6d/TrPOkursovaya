@@ -110,6 +110,29 @@ int main()
 	
     	case '1': 
 		{
+			system("cls");
+			cout << "1. Normal\n2. Hardmode (15 tryes)\n3. Back\n";
+				switch ((ch_key=_getch()))
+				{
+					case '1':
+					{
+						system("cls");
+						game(A, B, n, 20);
+						break;
+					}
+					case '2':
+					{
+						system ("cls");
+						game(A, B, n, 1);
+						break;
+					}
+					case '3':
+					{
+						system ("cls");
+						break;
+					}
+				}
+			
 			break;
 		}
 		
