@@ -5,7 +5,7 @@
 
 using namespace std;
 
-int  i = 0;
+int  i = 0, cow, bull;
 
 int Numgeneration(short int n, int A[])
 {   
@@ -30,12 +30,40 @@ int bender(short int n, int q, int B[])
 	return(B[n]);
 	
 }
+
+int CowAndBull(int A[], int B[], short int n)
+{
+	cow = bull = 0;
+	int i = 0;
+	for (i = 0; i < n; i++)
+	{
+		if(A[i] == B[i])
+		{
+		bull++;
+		}
+	}
+	
+	for (i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			if(A[i] == B[j])
+			cow++;
+		}
+	}
+	cow = cow - bull; 
+	cout<<"Num of bulls: " << bull << "  Num of cows: " << cow << endl;
+	return(cow, bull);
+}
+
 int main()
 {
 	short int n = 4;
-    int A[n], B[n], q;
+    int A[n], B[n], q=1234;
     Numgeneration(n, A);
     bender(n, q, B);
+    CowAndBull(A, B, n);
+    
     system("PAUSE");
     return 0;
 }
