@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include <time.h>
 #include <cmath>
-#include <conio.h>
 #include <clocale>
 #include <fstream>
+#include <curses.h>
 
 using namespace std;
 
@@ -34,7 +34,7 @@ int bender(short int n, int q, int B[])
 	
 }
 
-int CowAndBull(int A[], int B[], short int n)
+void CowAndBull(int A[], int B[], short int n)
 {
 	cow = bull = 0;
 	int i = 0;
@@ -56,7 +56,6 @@ int CowAndBull(int A[], int B[], short int n)
 	}
 	cow = cow - bull; 
 	cout<<"Num of bulls: " << bull << "  Num of cows: " << cow << endl;
-	return(cow, bull);
 }
 
 void game(int A[], int B[], short int n, int k)
@@ -95,7 +94,7 @@ int main()
 {
 	setlocale (LC_ALL, "Russian");
     short int n = 4;
-    int A[n], B[n], q, t;
+    int A[n], B[n];
     Numgeneration(n, A);
     char ch_key, buff[300];
     bool bmenu = true;
@@ -105,14 +104,14 @@ int main()
     while (bmenu) 
 	{
 		cout << "1. Start game.\n2. Rules\nESC for Exit.";
-    	switch((ch_key=_getch()))
+    	switch((ch_key=getch()))
     	{
 	
     	case '1': 
 		{
 			system("cls");
 			cout << "1. Normal\n2. Hardmode (15 tryes)\n3. Back\n";
-				switch ((ch_key=_getch()))
+				switch ((ch_key=getch()))
 				{
 					case '1':
 					{
