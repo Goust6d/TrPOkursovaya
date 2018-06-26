@@ -29,3 +29,8 @@ bin/game_test:
 
 clean:
 	-rm -rf build bin
+build/main_test.o: proj/Kursovaya/Kursovaya/main_test.cpp.cpp thirdparty/ctest.h proj/Kursovaya/Kursovaya/Bender.cpp proj/Kursovaya/Kursovaya/Numgeneration.cpp
+	$(CXX) $(CFLAGS) -I thirdparty -I src -c proj/Kursovaya/Kursovaya/main_test.cpp.cpp -o build/main_test.o
+
+bin/game_test: $(OB) 
+	$(CXX) $(FLAGS) $(OB) -o bin/main_test
