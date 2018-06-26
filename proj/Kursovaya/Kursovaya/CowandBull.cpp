@@ -27,7 +27,7 @@ void CowAndBull(int A[], int B[], short int n, q, b)
 	{
 		if(A[i] == B[i])
 		{
-		bull++;
+			bull++;
 		}
 	}
 	
@@ -39,7 +39,9 @@ void CowAndBull(int A[], int B[], short int n, q, b)
 			cow++;
 		}
 	}
-	If((bull = 2)&&(cow = 1)){
+	cow-=bull;
+	if((bull = 2)&&(cow = 1))
+	{
 		res = 1;
 	}
 	else res 0;
