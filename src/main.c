@@ -2,12 +2,9 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <time.h>
-// #include <cmath>
 #include <locale.h>
-// #include <fstream>
 #include "func.h"
 
-//using namespace std;
 int  i = 0, cow, bull;
 
 int numgeneration(short int n, int A[])
@@ -57,52 +54,39 @@ void cowandbull(int A[], int B[], short int n)
 		}
 	}
 	cow = cow - bull;
-	printf("Num of bulls: %d     Num of cows: %d", bull, cow);
-	// cout << "Num of bulls: " << bull << "  Num of cows: " << cow << endl;
+	printf("Num of bulls: %d     Num of cows: %d\n", bull, cow);
 }
 
 void game(int A[], int B[], short int n, int k)
 {
 	int q, kmax = 15;
-
-	printf("Enter the number");
+	printf("Enter the number:\n\n");
 	scanf("%i", &q);
-	// cout << "Enter number:" << endl;
-	// cin >> q;
 	while ((q < 1000) || (q > 9999))
 	{
 		printf("Enter the number");
 		scanf("%i", &q);
-		// cout << "Enter number: " << endl;
-		// cin >> q;
 	}
 	Bender(n, q, B);
 	cowandbull(A, B, n);
 	while (bull != n)
 	{
-		printf("Wrong number! Try again!\n");
+		printf("Wrong number! Try again!\n\n");
 		scanf("%i", &q);
-		// cout << "Wrong number! Try again:" << endl;
-		// cin >> q;
 		k++;
 		if (k == kmax)
 		{
 			printf("\nGame over!\n");
-			// cout << endl << "Game over!";
 			system("pause");
 			system("cls");
 			break;
 		}
-
-		//cout << endl;
 		Bender(n, q, B);
 		cowandbull(A, B, n);
 	}
-	//cout << endl;
 	if (bull == n)
 	{
 		printf("You won! Congratulations!\n Back to main menu...");
-		// cout << "You won! Congratulations!\n Back to main menu...";
 	}
 	system("pause");
 	system("cls");
@@ -114,89 +98,64 @@ int main()
 	short int n = 4;
 	int k;
 	int A[4], B[4];
-	//numgeneration(n, A);
-	char ch_key, c; //buff[300];
-	bool bmenu = true;
-//	ifstream rules;
+	char c;
 
-
-	while (bmenu)
+	while (c!=4)
 	{
+		printf("1. Start game.\n2. Hardmode (15 tryes)\n3. Rules\nX for Exit.\n");
 		c = getchar();
-		printf("1. Start game.\n2. Rules\nESC for Exit.");
-		// cout << "1. Start game.\n2. Rules\nESC for Exit.";
 		switch (c)
 		{
 
 			case '1':
 			{
-				ch_key = getchar();
 				system("cls");
-				printf("N. Normal\nH. Hardmode (15 tryes)\n3. Back\n");
-				// cout << "1. Normal\n2. Hardmode (15 tryes)\n3. Back\n"
-				switch (ch_key);
-				{
-					case 'n':
-					{
-						system("cls");
-						k = 20;
-						game(A, B, n, k);
-						break;
-					}
-					case 'h':
-					{
-						system("cls");
-						k = 1;
-						game(A, B, n, k);
-						break;
-					}
-					case '3':
-					{
-						system("cls");
-						break;
-					}
-					/*default:
-					{
-						system("cls");
-						printf("You choose wrong number. Please use keys 1-3 or ESC.\n");
-						// cout << "You choose wrong number. Please use keys 1-3 or ESC.\n";
-						system("pause");
-						system("cls");
-					}*/
-				}
+				k = 20;
+				game(A, B, n, k);
 				break;
 			}
-
-			/*case '2':
+			case '2':
 			{
 				system("cls");
-				rules.open("Rules.txt");
-				if (rules)
+				k = 1;
+				game(A, B, n, k);
+				break;
+			}
+			case '3':
+			{
+				system("cls");
+				FILE *f = fopen("Rules.txt", "r");
+				char ch;
+				printf(" ");
+				while (!feof(f))
 				{
-					while (!rules.eof())
+					ch = getc(f);
+					if (ch == ' ')
 					{
-						rules.getline(buff, 300);
-						cout << buff << endl;
+						k++;
 					}
-					rules.close();
+					if (k == 10)
+					{
+						printf("\n");
+						k = 0;
+					}
+					printf("%c", ch);
 				}
-				else printf("Error");
+				printf("\n");
+				fclose(f);
 				system("pause");
 				system("cls");
 				break;
-			}*/
+			}
 
-			case 27:
+			case 'x':
 			{
-				bmenu = false;
-				//cout << endl;
-				break;
+				return 0;
 			}
 			default:
 			{
 				system("cls");
 				printf("You choose wrong number. Please use keys 1-3 or ESC.\n");
-				// cout << "You choose wrong number. Please use keys 1-3 or ESC.\n";
 				system("pause");
 				system("cls");
 			}
