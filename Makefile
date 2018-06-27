@@ -1,22 +1,36 @@
 CXX=gcc
-CFLAGS = -c -Wall -Werror
-FLAGS = -Wall -Werror
-OBJECTS = build/main.o
-OB = build/main_test.o
+CFLAGS =  -c -Wall -Werror -std=c99
+FLAGS  =  -Wall -Werror -std=c99
+OBJECTS = build/main.o build/Bender.o build/Numgeneration.o
+OB = build/main_test.o build/Bender.o build/Numgeneration.o
 
-.PHONY: clean all bin build bin/game default test
+.PHONY: clean all bin build bin/game bin/game_test default test
 
-all: bin build bin/game default test
+all: bin build bin/game bin/game_test default test
 
-default: bin/game
+default: bin/game/prog
+
+test: bin/game_test/prog_test
+	bin/game_test/prog_test
+
+bin/game/prog: $(OBJECTS) 
+	$(CXX) $(FLAGS) $(OBJECTS) -o bin/game/prog
+
+build/main.o: src/main.c src/func.h
+	$(CXX) $(CFLAGS) src/main.c -o build/main.o
+
+build/Bender.o: src/Bender.c src/func.h
+	$(CXX) $(CFLAGS) src/Bender.c -o build/Bender.o
+
+build/Numgeneration.o: src/Numgeneration.c src/func.h
+	$(CXX) $(CFLAGS) src/Numgeneration.c -o build/Numgeneration.o
 
 
-bin/game: $(OBJECTS)
-	$(CXX) $(FLAGS) $(OBJECTS) -o bin/game
+bin/game_test/prog_test: $(OB)
+	$(CXX) $(FLAGS) $(OB) -o bin/game_test/prog_test
 
-build/main.o: src/main.cpp
-	$(CXX) $(CFLAGS) src/main.cpp -o build/main.o
-
+build/main_test.o: Test/main_test.c src/func.h thirdparty/ctest.h
+	$(CXX) $(CFLAGS) -I thirdparty -I src -c Test/main_test.c -o build/main_test.o
 
 build:
 	mkdir build
@@ -26,11 +40,5 @@ bin/game:
 	mkdir bin/game
 bin/game_test:
 	mkdir bin/game_test
-
 clean:
 	-rm -rf build bin
-build/main_test.o: proj/Kursovaya/Kursovaya/main_test.cpp.cpp thirdparty/ctest.h proj/Kursovaya/Kursovaya/Bender.cpp proj/Kursovaya/Kursovaya/Numgeneration.cpp
-	$(CXX) $(CFLAGS) -I thirdparty -I src -c proj/Kursovaya/Kursovaya/main_test.cpp.cpp -o build/main_test.o
-
-bin/game_test: $(OB) 
-	$(CXX) $(FLAGS) $(OB) -o bin/main_test
