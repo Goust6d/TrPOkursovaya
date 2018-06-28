@@ -7,30 +7,6 @@
 
 int  i = 0, cow, bull;
 
-int numgeneration(short int n, int A[])
-{
-	srand(time(NULL));
-	A[0] = rand() % 9 + 1;
-	for (i = 1; i < n; i++)
-	{
-		A[i] = rand() % 10;
-	}
-	return(A[n]);
-}
-
-int Bender(short int n, int q, int B[])
-{
-	int d = 1000;
-	for (i = 0; i < n; i++)
-	{
-		B[i] = q / d;
-		q = q % d;
-		d = d / 10;
-	}
-	return(B[n]);
-
-}
-
 void cowandbull(int A[], int B[], short int n)
 {
 	cow = bull = 0;
@@ -98,6 +74,7 @@ int main()
 	short int n = 4;
 	int k;
 	int A[4], B[4];
+	Numgeneration(n, A);
 	char c;
 
 	while (c!=4)
