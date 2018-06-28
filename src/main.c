@@ -43,7 +43,7 @@ void game(int A[], int B[], short int n, int k)
 		printf("Enter the number");
 		scanf("%i", &q);
 	}
-	Bender(n, q, B);
+	bender(n, q, B);
 	cowandbull(A, B, n);
 	while (bull != n)
 	{
@@ -57,7 +57,7 @@ void game(int A[], int B[], short int n, int k)
 			system("cls");
 			break;
 		}
-		Bender(n, q, B);
+		bender(n, q, B);
 		cowandbull(A, B, n);
 	}
 	if (bull == n)
