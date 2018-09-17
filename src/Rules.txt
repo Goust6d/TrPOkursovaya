@@ -1,7 +1,8 @@
-Правила игры "Быки и Коровы"
+The rules of the game "Bulls and Cows"
 
-Загадывается определённое число. Вы должны угадать его, вводя с помощью клавиатуры.
-При вводе числа Вам будут показываться число "Быков" и "Коров" в числе.
-Количество "Быков" - это количество цифр, которые совпали численно и по порядковому месту, в загаданном и введённом числах.
-Если же цифра не стоит на этом месте, но она присутствует в загаданном числе, то эта цифра считается за "Корову".
-В усложнённом режиме количество ваших попыток ограниченно, так что решайте осторожнее. :-) 
+A certain number is guessed. You must guess it by typing with the keyboard.
+When you enter a number you will be shown the number of "Bulls" and "Cows" in the number.
+The number of "Bulls" is the number of digits that have coincided numerically and in the order of the place, in the number and number entered.
+If the figure does not stand on this place, but it is present in the number conceived, then this figure is considered to be "Cow".
+In normal mode, you have 30 attempts.
+In a complicated mode, the number of your attempts is limited to 15, so decide carefully. :-)
